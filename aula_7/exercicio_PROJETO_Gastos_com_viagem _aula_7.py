@@ -8,11 +8,11 @@
 #=======================================================================================================================================
 
 def custo_hotel(noites):
-    custo_total = noites * 140.00
-    return custo_total
+    custo_total_h = noites * 140.00
+    return custo_total_h
 
-hotel = int(input("Digita o numero de noites da hospedagem: "))
-print("Valor total da hospendagem: R${0:.2f}".format(custo_hotel(hotel)))
+# hotel = int(input("Digita o numero de noites da hospedagem: "))
+# print("Valor total da hospendagem: R${0:.2f}".format(custo_hotel(hotel)))
 
 #=======================================================================================================================================
 #Passagem
@@ -40,9 +40,9 @@ def custo_aviao(cidade):
     else:
         return print("Destino inválido")
 
-destino = (input("Digite seu destino: "))
-valid = destino.lower().replace('ã', 'a').replace(' ', '_')
-print("Valor da passagem: R${0:.2f}".format(custo_aviao(valid)))
+# destino = (input("Digite seu destino: "))
+# valid = destino.lower().replace('ã', 'a').replace(' ', '_')
+# print("Valor da passagem: R${0:.2f}".format(custo_aviao(valid)))
 
 #=======================================================================================================================================
 #Aluguel de Carro
@@ -58,17 +58,17 @@ print("Valor da passagem: R${0:.2f}".format(custo_aviao(valid)))
 def custo_carro(dias):
     custo_diario = 40.00
     if dias >= 3 and dias < 7:
-        custo_total = custo_diario * dias - 20.00
-        return custo_total
+        custo_total_c = custo_diario * dias - 20.00
+        return custo_total_c
     elif dias >= 7:
-        custo_total = custo_diario * dias - 50.00
-        return custo_total
+        custo_total_c = custo_diario * dias - 50.00
+        return custo_total_c
     else:
-        custo_total = custo_diario * dias
-        return custo_total
+        custo_total_c = custo_diario * dias
+        return custo_total_c
 
-locacao = int(input("Digite quantos dias deseja locar nosso veículo: "))
-print("Valor total da locação: R${0:.2f}".format(custo_carro(locacao))) 
+# locacao = int(input("Digite quantos dias deseja locar nosso veículo: "))
+# print("Valor total da locação: R${0:.2f}".format(custo_carro(locacao)))
 
 #=======================================================================================================================================
 #Cálculo Total
@@ -76,6 +76,7 @@ print("Valor total da locação: R${0:.2f}".format(custo_carro(locacao)))
 #- Reutilize as funções já criadas.
 #- Exiba o total da viagem chamando apenas a nova função declarada!
 #=======================================================================================================================================
+
 def total_viagem(cidade, dias):
     total_hotel = custo_hotel(dias)
     total_aviao = custo_aviao(cidade)
@@ -83,13 +84,32 @@ def total_viagem(cidade, dias):
     total = total_hotel + total_aviao + total_carro
     return total
 
-viagem_cidade = input("Escolha qual o destino da sua viagem: ")
-valid = viagem_cidade.lower().replace('ã', 'a').replace(' ', '_')
-viagem_dias = int(input("Quantos dias deseja viajar: "))
-print("Total de despesas com a viagem: R${0:.2f}".format(total_viagem(valid, viagem_dias)))
+# '''viagem_cidade = input("Escolha qual o destino da sua viagem: ")
+# valid = viagem_cidade.lower().replace('ã', 'a').replace(' ', '_')
+# viagem_dias = int(input("Quantos dias deseja viajar: "))
+# print("Total de despesas com a viagem: R${0:.2f}".format(total_viagem(valid, viagem_dias)))
 
 #=======================================================================================================================================
 #Gastos Extras
 #5 - Modifique essa nova função criada e adicione um terceiro argumento: 'gastos_extras' e some esse valor ao total da viagem.
 #Exiba no console o custo total de uma viagem de 12 dias para 'Manaus' gastando R$ 800,00 adicionais.
-#======================================================================================================================================='''
+#=======================================================================================================================================
+
+def gastos_extra(cidade, dias, gastos_extras):
+    
+    total_hotel = custo_hotel(dias)
+    total_aviao = custo_aviao(cidade)
+    total_carro = custo_carro(dias)
+    extras = gastos_extras
+    total_gastos_extras = total_hotel + total_aviao + total_carro + extras
+    return total_gastos_extras
+
+
+viagem_cidade = input("Escolha qual o destino da sua viagem: ")
+valid = viagem_cidade.lower().replace('ã', 'a').replace(' ', '_')
+viagem_dias = int(input("Quantos dias deseja viajar: ")) 
+gastos_ = float(input("Gastos extras: R$ "))
+
+
+
+print("Total de despesas com a viagem: R${0:.2f}".format(gastos_extra(valid, viagem_dias, gastos_)))
