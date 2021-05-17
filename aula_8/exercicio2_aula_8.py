@@ -1,6 +1,9 @@
 # Faça um jogo da forca. O programa terá uma lista de palavras lidas de um arquivo texto e escolherá uma aleatoriamente.
 # O jogador poderá errar 6 vezes antes de ser enforcado.
-palavra = "teste"
+import random
+lista = input("Digite uma lista de palavras separadas por espaço: ")
+lista = lista.split(" ")
+palavra = random.choice(lista)
 parada = ["_" for i in palavra]
 chances = 6
 alfabeto = list("abdcefghijklmnopqrstuvwxyz")
@@ -16,7 +19,7 @@ for i in range(tamanho):
          else:
                 print('_', end=' ')
         palpite = input("\nDigite seu palpite: ").lower()
-        print("Chances:", chances)
+        
         if palpite in palavra:
                 for l in range(len(palavra)):
                  if palpite == palavra[l]:
@@ -26,14 +29,15 @@ for i in range(tamanho):
         if palpite not in alfabeto or palpite == '':
 	        print("Isso não é uma letra!")
         elif palpite in tentativas:
-	        print("Você já tentou essa letra. Tente outra!")
-        
+                print("Você já tentou essa letra. Tente outra!")
+                continue
         elif palpite in palavra:
                 print("Muito bem acertou uma letra")
         else:
                 print("Passou longe")
                 chances -= 1
         tentativas.append(palpite)
+        print("Chances:", chances)
         print(tentativas)
         if chances == 0: 
  	        print("Game over!!!")
